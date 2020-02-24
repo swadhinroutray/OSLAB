@@ -42,6 +42,7 @@ void findWaitingTimes(struct Process proc[], int n,
         if (minm == 0) 
             minm = 1000000; 
         if (rt[shortest] == 0) { 
+            printf("Proccess Completed Id: %d at %d \n", proc[shortest].pid,t+1);
             complete++; 
             check = false; 
             finish_time = t + 1; 
@@ -97,6 +98,7 @@ void findWaitingTimer(int processes[], int n,
         bool done = true; 
         for (int i = 0 ; i < n; i++) 
         {
+            
             if (rem_bt[i] > 0) 
             { 
                 done = false;  
@@ -112,7 +114,9 @@ void findWaitingTimer(int processes[], int n,
                     wt[i] = t - bt[i]; 
                     rem_bt[i] = 0; 
                 } 
-            } 
+            }
+            printf("Proccess Id: %d has time remaining %d \n", i,rem_bt[i]);
+            
         } 
         if (done == true) 
           break; 
@@ -167,9 +171,11 @@ void Priority(){
         p[i]=i+1;          
     }
 
+    int time=0;
     for(i=0;i<n;i++)
     {
         pos=i;
+        printf("Priority: %d \t Burst Time: %d \t Arrived at: %d \n", pr[i],bt[i],time);
         for(j=i+1;j<n;j++)
         {
             if(pr[j]<pr[pos])
@@ -187,6 +193,7 @@ void Priority(){
         temp=p[i];
         p[i]=p[pos];
         p[pos]=temp;
+        time+= bt[i];
     }
  
     wt[0]=0;  
@@ -226,10 +233,15 @@ int main()
             break;
         }
         if(ch==1){
-            struct Process proc[] = { { 1, 6, 1 }, { 2, 8, 1 }, 
-                    { 3, 7, 2 }, { 4, 3, 3 } }; 
-            int n = sizeof(proc) / sizeof(proc[0]); 
-  
+            struct Process proc[] = { { 1, 6, 0 }, { 2, 8, 0 }, 
+                    { 3, 7, 1 }, { 4, 3, 2 } }; 
+            int n = sizeof(proc) / sizeof(proc[0]);
+           // int time =proc[0].art; 
+            for (int i = 0; i < n; i++)
+            {
+            printf("Process id: %d \t Burst Time: %d \t Arrived at: %d \n", proc[i].pid,proc[i].bt,proc[i].art);
+            }
+            
             findavgTimes(proc, n); 
         }
         else if(ch==2){
@@ -237,7 +249,13 @@ int main()
             int n = sizeof processes / sizeof processes[0]; 
             int burst_time[] = {10, 5, 8}; 
             int quantum = 2; 
+            for (int i = 0; i < n; i++)
+            {
+            printf("Process id: %d \t Burst Time: %d \n", processes[i],burst_time[i]);
+            }
             findavgTimer(processes, n, burst_time, quantum); 
+            
+            
         }
         else if(ch==3){
             Priority();
