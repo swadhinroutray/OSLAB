@@ -1,0 +1,11 @@
+echo "Input Pattern"
+read pattern
+echo "1.Serach/Replace 2.Delete Occurences 3. Exit"
+read ch
+echo "Input filename"
+read name
+case ch in 
+1)grep $pattern $name | wc -l ;;
+2)sed -e "d/{$pattern}" $name;;
+3) exit 1;;
+esac

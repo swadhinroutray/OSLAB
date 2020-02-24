@@ -1,0 +1,7 @@
+echo "Enter values of a b"
+read a b
+result= $((a + 
+b))
+echo $result
+
+
