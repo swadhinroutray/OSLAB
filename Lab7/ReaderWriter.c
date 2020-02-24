@@ -37,12 +37,15 @@ int main(){
     pthread_t rtid[10],wtid[10];
     sem_init(&mutex,0,1);
     sem_init(&writerbolock,0,1);
-     for(i=0;i<=2;i++)
+    printf("Input Data amount: ");
+    int n;
+    scanf("%d", &n);
+     for(i=0;i<n;i++)
   {
     pthread_create(&wtid[i],NULL,Writer,(void *)i);
     pthread_create(&rtid[i],NULL,Reader,(void *)i);
   }
-  for(i=0;i<=2;i++)
+  for(i=0;i<n;i++)
   {
     pthread_join(wtid[i],NULL);
     pthread_join(rtid[i],NULL);
