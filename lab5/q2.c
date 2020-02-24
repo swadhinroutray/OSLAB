@@ -5,7 +5,7 @@
 #include<string.h>
 #include<stdlib.h>
 int main(int argc,char *argv[]){
-int status;
+int status,i,j;
 int n=argc;
 char a[25][25];
 for(int i=1;i<n;i++)
@@ -15,9 +15,9 @@ fr=fork();
 if(fr==0)
 {
    char t[25];
-   for(int i=1;i<n;i++)
+   for( i=1;i<n;i++)
    {
-     for(int j=1;j<n-i;j++)
+     for( j=1;j<n-i;j++)
       {
          if(strcmp(a[j],a[j+1])>0)
           {
@@ -28,13 +28,13 @@ if(fr==0)
       }
    }
 printf("sorted is: \n");
-for(int i=1;i<n;i++){printf("%s\n",a[i]);}
+for( i=1;i<n;i++){printf("%s\n",a[i]);}
 exit(0);
 }
 else{
 wait(&status);
 printf("\nunsorted is: \n");
-for(int i=1;i<argc;i++)
+for( i=1;i<argc;i++)
 printf("%s\n",argv[i]);
 }
 return 0;

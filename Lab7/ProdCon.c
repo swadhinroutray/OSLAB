@@ -7,7 +7,7 @@
 #define MAXCAPACITY 100
 
 int buff[MAXCAPACITY];
-sem_t pmutex,cmutex,empty,full; //Semaphore Initialisation
+sem_t pmutex,cmutex,empty,full; //Semaphore Declaration
 int in=1, out=1;
 int item=0;
 void *produce(void *);
