@@ -233,8 +233,20 @@ int main()
             break;
         }
         if(ch==1){
-            struct Process proc[] = { { 1, 6, 0 }, { 2, 8, 0 }, 
-                    { 3, 7, 1 }, { 4, 3, 2 } }; 
+            printf("Input Number of processes \n");
+            int num;
+            scanf("%d",&num);
+            struct Process proc[num];
+            for(int i =0;i<num;i++){
+               proc[i].pid= i;
+               int btime,atime;
+               printf("Input the Burst time & Arrival time \n");
+               scanf("%d %d",&btime,&atime);
+               proc[i].bt = btime;
+               proc[i].art =atime; 
+            }
+             // { { 1, 6, 0 }, { 2, 8, 0 }, 
+               //     { 3, 7, 1 }, { 4, 3, 2 } }; 
             int n = sizeof(proc) / sizeof(proc[0]);
            // int time =proc[0].art; 
             for (int i = 0; i < n; i++)
