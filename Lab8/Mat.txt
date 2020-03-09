@@ -19,8 +19,32 @@
     Max:
 
 7 5 3
-0 1 0
+3 2 2
+9 0 2
+2 2 2 
+4 3 3 
+
+Available 3 3 2
+
+//Resource allocation algorithm 
+enter the number of processes
+5
+enter the number of resource type
+ 3
+enter allocation matrix0 1 0
 2 0 0
 3 0 2
 2 1 1
 0 0 2
+enter max matrix7 5 3
+3 2 2
+9 0 2
+2 2 2 
+4 3 3 
+enter available
+3 3 2
+enter the process which requests
+1
+enter the request
+1 0 2
+13402
